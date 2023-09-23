@@ -1,4 +1,4 @@
-const url = 'portifolio.xlsx'; // Caminho para o arquivo .xlsx
+const url = 'https://karaokeinksa.github.io/karaokeinksa/portifolio.xlsx'; // Caminho para o arquivo .xlsx
 
 fetch(url)
     .then(response => response.arrayBuffer())
