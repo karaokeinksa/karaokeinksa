@@ -1,4 +1,4 @@
-const url = 'https://karaokeinksa55.000webhostapp.com/portifolio.xlsx'; // Caminho para o arquivo .xlsx
+const url = 'portifolio.xlsx'; // Caminho para o arquivo .xlsx
 
 fetch(url)
     .then(response => response.arrayBuffer())
