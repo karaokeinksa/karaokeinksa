@@ -54,7 +54,7 @@ fetch(url)
     });
 
 function enviarMusicaParaServidor(nome, cantor, musica) {
-    const url = 'salvarMusica.php'; // Ajuste o URL conforme necessário
+    const url = 'https://karaokeinksa.github.io/karaokeinksa/salvarMusica.php'; // Ajuste o URL conforme necessário
 
     const formData = new FormData();
     formData.append('nome', nome);  // Adiciona o nome ao formulário
@@ -146,7 +146,7 @@ function adicionarMusica(event) {
         }
         
 function enviarMusicaParaServidor(nome, cantor, musica) {
-    const url = 'salvarMusica.php';
+    const url = 'https://karaokeinksa.github.io/karaokeinksa/salvarMusica.php';
 
     const formData = new FormData();
     formData.append('nome', nome);
