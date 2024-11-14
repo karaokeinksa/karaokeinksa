@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke In Ksa</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Estilos do aplicativo -->
+    <script src="js/app.js" defer></script> <!-- Lógica principal -->
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Karaoke In Ksa" />
+        <nav>
+            <button id="btn-ver-fila">VER FILA</button>
+            <button id="btn-digite-musica">DIGITE SUA MÚSICA</button>
+        </nav>  
+        <div class="pesquisar-container">
+            <input type="text" id="pesquisar" placeholder="PESQUISAR">
+            <button id="btn-limpar-pesquisa" onclick="limparPesquisa()">&#10006;</button> <!-- Botão X para limpar pesquisa -->
+        </div>
+    </header>
+
+    <!-- Modal para visualizar a fila -->
+    <div id="modal-fila" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <h2>FILA DE MÚSICAS</h2>
+            <table id="tabela-fila">
+                <!-- A fila será preenchida via JavaScript -->
+            </table>
+        </div>
+    </div>
+        
+    <main id="conteudo">
+        <!-- Aqui será exibida a lista de músicas -->
+            <div class="musica">
+        <img src="images/default-thumbnail.png" alt="thumbnail" class="thumbnail" />
+        <h3>Nome da Música</h3>
+        <p>Artista</p>
+        <button class="btn-enviar" onclick="enviarMusica('Nome da Música', 'Artista')">ENVIAR</button>
+    </div>
+    </main>
+
+</body>
+</html>

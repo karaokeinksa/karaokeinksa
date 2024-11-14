@@ -1,0 +1,498 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex; /* Usar flexbox para centralizar */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+    margin: 0; /* Remove margens padrão do body */
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    color: #c443e5;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Alinha a imagem e o nav na coluna */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    z-index: 1000; /* Para garantir que o header fique acima dos outros elementos */
+}
+
+header img {
+    width: 80px; /* tamanho da imagemr */
+    height: auto; /* Mantém a proporção da imagem */
+}
+nav {
+    margin-top: 10px; /* Espaçamento entre a imagem e o nav */
+    display: flex;
+    justify-content: center; /* Centraliza os links do nav */
+}
+
+nav a {
+    color: #c443e5; /* Cor dos links */
+    margin: 0 10px; /* Espaçamento entre os links */
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Estilizando os botões na navegação */
+nav button {
+    background-color: #c443e5; /* Cor de fundo dos botões */
+    color: white; /* Cor do texto */
+    border: none; /* Sem bordas */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 0px 15px; /* Espaçamento interno */
+    margin: 0 10px; /* Espaçamento entre os botões */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave para o hover */
+}
+
+/* Efeito hover nos botões */
+nav button:hover {
+    background-color: #9b2cfb; /* Cor de fundo no hover */
+}
+#pesquisar {
+    width: 100%; /* Faz com que o campo ocupe toda a largura da div pai */
+    padding: 10px; /* Adiciona preenchimento ao campo */
+    border: 1px solid #c443e5; 
+    border-radius: 5px; 
+    background-color: transparent; 
+    color: white; 
+    box-sizing: border-box; 
+}
+
+.pesquisar-container {
+    margin-top: 10px; /* Espaçamento acima do campo de pesquisa */
+    width: 100%; /* Para que a div ocupe toda a largura */
+    display: flex; /* Permite que o campo de pesquisa seja centralizado */
+    justify-content: center; /* Centraliza na linha */
+}
+#btn-limpar-pesquisa {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Inicialmente escondido */
+    color: white;
+}
+
+#btn-limpar-pesquisa:focus {
+    outline: none;
+}
+
+nav input[type="text"] {
+    width: 100%; /* Faz o campo ter a largura total do contêiner */
+    max-width: 600px; /* Define uma largura máxima conforme desejado */
+    padding: 10px; /* Adiciona preenchimento ao campo */
+    border: 1px solid #c443e5; /* Borda para o campo */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: transparent; /* Fundo transparente */
+    color: white; /* Cor do texto */
+    box-sizing: border-box; /* Para garantir que paddings e bordas sejam incluídos na largura */
+}
+
+main {
+    margin-top: 130px; /* Para não ficar atrás do cabeçalho fixo */
+    padding: 50px;
+    display: flex; /* Utiliza flexbox para o conteúdo do main */
+    flex-direction: column; /* Alinha os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    width: 100%; /* Para ocupar a largura total */
+}
+
+/* Estilos para o modal e tabela da fila */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.modal-conteudo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.modal-conteudo h2 {
+    color: #c443e5;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.fechar {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #c443e5;
+    transition: color 0.3s ease;
+}
+
+.fechar:hover {
+    color: black;
+}
+
+#tabela-fila {
+    width: 100%;
+    border-collapse: separate;
+    margin-top: 0px;
+    border: 1px solid #e5e7eb;
+}
+
+#tabela-fila th,
+#tabela-fila td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    color: black;
+}
+/* Remove a borda direita da última coluna */
+#tabela-fila th:last-child,
+#tabela-fila td:last-child {
+    border-right: none;
+}
+
+#tabela-fila th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #c443e5;
+}
+
+#tabela-fila tr:hover {
+    background-color: #f8f0fc;
+}
+
+.numero-fila {
+    font-weight: bold;
+    color: #c443e5;
+    text-align: center;
+    width: 80px;
+}
+.titulo-musica {
+    font-weight: 500;
+}
+
+.fila-vazia {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    font-style: italic;
+}
+
+.total-fila {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #c443e5;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+/* Scrollbar personalizada */
+.modal-conteudo::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-conteudo::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-conteudo::-webkit-scrollbar-thumb {
+    background: #c443e5;
+    border-radius: 4px;
+}
+
+.modal-conteudo::-webkit-scrollbar-thumb:hover {
+    background: #9f35b8;
+}
+
+
+/* Animação do modal */
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-conteudo {
+    animation: fadeIn 0.3s ease-out;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-conteudo {
+        width: 95%;
+        padding: 15px;
+        margin: 15px;
+    }
+    
+    .modal-conteudo h2 {
+        font-size: 20px;
+    }
+    
+    #tabela-fila th,
+    #tabela-fila td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    #tabela-fila th {
+        font-size: 12px;
+    }
+    
+    .numero-fila {
+        width: 50px;
+    }
+    
+    /* Ajuste para tabela responsiva */
+    #tabela-fila {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+#conteudo {
+    display: flex;
+    flex-direction: column; /* Para empilhar as músicas verticalmente */
+    align-items: center; /* Centraliza o conteúdo dentro do #conteudo */
+}
+
+.musica {
+    display: flex; /* Usar flexbox para a música */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 10px; /* Espaçamento entre as músicas */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda leve ao redor da música */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: transparent; /* Cor de fundo */
+    width: 100%; /* Para que cada música ocupe a largura total */
+    max-width: 600px; /* Define uma largura máxima */
+}
+
+.thumbnail {
+    width: auto; /* Largura do thumbnail */
+    height: 60px; /* Altura do thumbnail */
+    object-fit: cover; /* Para que a imagem não distorça */
+    border-radius: 4px; /* Bordas arredondadas para a imagem */
+    margin-right: 10px; /* Espaçamento à direita da imagem */
+}
+
+.info {
+    flex-grow: 1; /* Faz a seção 'info' crescer para ocupar o espaço disponível */
+}
+
+h3 {
+    margin: 0; /* Remove margens padrão do título */
+    font-size: 18px; /* Tamanho da fonte do título */
+    font-weight: bold;
+}
+
+p {
+    margin: 0; /* Remove margens padrão da descrição */
+    font-size: 14px; /* Tamanho da fonte do artista */
+    color: white; /* Cor do texto do artista */
+}
+
+.btn-enviar {
+    padding: 5px 10px; /* Espaçamento interno do botão */
+    background-color: #007BFF; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Sem bordas */
+    border-radius: 3px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão ao passar o mouse sobre o botão */
+}
+
+.btn-enviar:hover {
+    background-color: #0056b3; /* Efeito hover no botão */
+}
+/* Adicione isso ao seu arquivo styles.css existente */
+
+/* Estilos específicos para a página admin */
+.admin-container {
+    margin-top: 130px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-container h2 {
+    color: #c443e5;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #c443e5;
+    font-size: 18px;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #dc2626;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* Estilos para os botões de ação */
+.acoes {
+    white-space: nowrap;
+    text-align: center;
+    min-width: 120px; /* Garante espaço suficiente para os botões */
+}
+
+.btn-move {
+    background: none;
+    border: none;
+    color: #c443e5;
+    font-size: 23px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.btn-move:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn-move:hover:not(:disabled) {
+    color: #9b2cfb;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 0 5px;
+    margin-left: 8px;
+}
+
+.btn-delete:hover {
+    color: #dc2626;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 10px;
+    }
+        .main-admin {
+        padding: 10px;
+        margin-top: 100px;
+    }
+
+    .table-container {
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+    #tabela-fila th,
+    #tabela-fila td {
+        padding: 8px;
+        font-size: 14px;
+        color: black;
+    }
+
+    .btn-move,
+    .btn-delete {
+        padding: 0 3px;
+    }
+        /* Mantém as linhas verticais mesmo em telas menores */
+    #tabela-fila {
+        white-space: nowrap;
+    }
+    
+    .numero-fila {
+        width: 60px;
+    }
+}
+
+
+/* Novo estilo específico para o main da página admin */
+.main-admin {
+    margin-top: 0px;
+    padding: 0px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Restante dos estilos permanecem iguais */
+.admin-container {
+    padding: 0px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ajustes de responsividade para o main admin */
+@media (max-width: 768px) {
+    .main-admin {
+        padding: 10px;
+        margin-top: 100px;
+    }
+    
+    .admin-container {
+        padding: 10px;
+    }
+}

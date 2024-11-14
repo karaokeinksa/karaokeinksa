@@ -1,0 +1,21 @@
+{
+  "name": "Karaoke In KSA",
+  "short_name": "Karaoke",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#c443e5",
+  "description": "Escolha sua música!",
+  "icons": [
+    {
+      "src": "/images/192x192.png",
+      "sizes": "192x192",
+      "type": "images/png"
+    },
+    {
+      "src": "/images/512x512.png",
+      "sizes": "512x512",
+      "type": "images/png"
+    }
+  ]
+}
