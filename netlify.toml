@@ -1,0 +1,4 @@
+[build]
+  base = "/"
+  publish = "build" # ou "dist" dependendo do seu framework
+  command = "npm run build" # ou o comando de build apropriado
